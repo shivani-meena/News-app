@@ -17,12 +17,8 @@ function Home() {
 
           if (Array.isArray(articlesArray)) {
             setArticles(articlesArray);
-          } else {
-            console.error('Invalid data format. Expected an array.');
-          }
-        } else {
-          console.error(`HTTP error! Status: ${response.status}`);
-        }
+          } 
+        } 
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -33,20 +29,22 @@ function Home() {
 
   return (
     <>
-        <Search />
-        <div className="container">
-        <div className="text">TOP NEWS FROM INDIA</div>
-          <div className="article row">
-            {articles.map((news) => (
-              <div className="col-lg-4">
-                <Newsrow
-                  key={news.title}
-                  news={news}
-                />
-              </div>
-            ))};
+        <Search 
+          // onClick={() => handleSearch}
+        />
+      <div className="container">
+          <div className="text">TOP NEWS FROM INDIA</div>
+            <div className="article row">
+              {articles.map((news) => (
+                <div className="col-lg-4">
+                  <Newsrow
+                    key={news.title}
+                    news={news}
+                  />
+                </div>
+              ))};
           </div>
-        </div>
+      </div>
       </>
       );
 };

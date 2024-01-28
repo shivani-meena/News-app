@@ -2,10 +2,18 @@
 @import url('https://fonts.googleapis.com/css?family=Inria Sans');
 @import url('https://fonts.googleapis.com/css?family=Inria Serif');
 
-  .container{
-    border: #3C3030 solid 2px;
-    max-width: 910px;
-  }
+.container{
+  border: #3C3030 solid 2px;
+  padding-right: 0%;
+}
+
+
+.large{
+  width: 910px;
+  margin: auto;
+  border:green solid 2px;
+}
+
 
 .search {
   margin: 89px auto;
@@ -78,6 +86,15 @@ button {
   float: left;
 }
 
+img{
+  margin-bottom: 16px;
+}
+
+.cardTitle{
+  margin-bottom: 16px;
+
+}
+
 @media(max-width:576px){
   img{
     width: 25px;
@@ -86,6 +103,7 @@ button {
 
 .card1{
   width: 250px;
+  margin-bottom: 96px;
   border: none;
 }
 
