@@ -1,95 +1,55 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import 'bootstrap/dist/css/bootstrap.css';
+import Newsrow from "./news_row";
+import Search from "./searchPage";
+import {Article} from "./dummyData.js";
+import { useEffect, useState } from "react";
+function Home() {
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://newsapi.org/v2/top-headlines?country=in&apiKey=6f88d61a316c423786b8a37c81deaf33');
 
-export default function Home() {
+        if (response.ok) {
+          const data = await response.json();
+          const articlesArray = data.articles || [];
+
+          if (Array.isArray(articlesArray)) {
+            setArticles(articlesArray);
+          } else {
+            console.error('Invalid data format. Expected an array.');
+          }
+        } else {
+          console.error(`HTTP error! Status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+        <Search />
+        <div className="container">
+        <div className="text">TOP NEWS FROM INDIA</div>
+          <div className="article row">
+            {articles.map((news) => (
+              <div className="col-lg-4">
+                <Newsrow
+                  key={news.title}
+                  news={news}
+                />
+              </div>
+            ))};
+          </div>
         </div>
-      </div>
+      </>
+      );
+};
+export default Home;
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
-}
