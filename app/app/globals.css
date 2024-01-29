@@ -1,26 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Iowan Old Style');
 @import url('https://fonts.googleapis.com/css?family=Inria Sans');
 @import url('https://fonts.googleapis.com/css?family=Inria Serif');
-
-.container{
-  border: #3C3030 solid 2px;
-  padding-right: 0%;
-}
-
-
-.large{
-  width: 910px;
-  margin: auto;
-  border:green solid 2px;
-}
-
 
 .search {
   margin: 89px auto;
   width: 355px;
   height: 60px;
   border: 1px solid var(--Dark, #3C3030);
-
 }
 
 input {
@@ -52,6 +37,16 @@ button {
   font-weight: 400;
 }
 
+@media(max-width:576px){
+  .headingText{
+    width: 237px;
+    font-size: 35.957px;
+    padding-top: 29px;
+    margin: auto;
+
+  }
+}
+
 .headerLineOne{
   border-bottom: #3C3030 solid 2px;
   height:150px;
@@ -63,17 +58,6 @@ button {
 
 }
 
-
-@media(max-width:576px){
-  .headingText{
-    width: 237px;
-    font-size: 35.957px;
-    padding-top: 29px;
-    margin: auto;
-
-  }
-}
-
 .text {
   color: var(--Dark-Red, #D02424);
   font-family: "Inria Sans";
@@ -82,7 +66,14 @@ button {
   margin-bottom: 20px;
 }
 
-.art{
+@media(max-width:576px){
+  .text{
+    margin-left:50px;
+
+  }
+}
+
+.arrow{
   float: left;
 }
 
@@ -118,13 +109,13 @@ img{
 .iconSearch{
   float: left;
   padding-top: 13px;
-  /* padding-left: 8px; */
 }
+
 
 .footerText{
   height:150px;
+  line-height: 150px;
   text-align: center;
-  padding-top: 59px;
   font-family: "Inria Serif";
   font-size: 16px;
   font-weight: 400;

@@ -7,7 +7,7 @@ function Newsrow({ news }) {
                 <div class="body">
                     <h5 class="cardTitle">{news.title}</h5>
                     <p class="card-text">{news.description}</p>
-                    <div className='art'>Read full article</div><a href={news.url} class="link"><img src="arrow.png"/></a>
+                    <div className='arrow'>Read full article</div><a href={news.url} class="link"><img src="arrow.png"/></a>
                 </div>
         </div>
         </>
